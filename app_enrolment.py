@@ -59,13 +59,12 @@ def load_data():
     try:
         # Get the directory where this script is located
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        DATASETS_DIR = os.path.join(BASE_DIR, "Datasets")
         
-        # Find all enrolment CSV files
-        files = glob.glob(os.path.join(DATASETS_DIR, "DF_ENROLMENT_*.csv"))
+        # Find all enrolment CSV files in root directory
+        files = glob.glob(os.path.join(BASE_DIR, "DF_ENROLMENT_*.csv"))
         
         if not files:
-            st.error(f"No enrolment data files found in {DATASETS_DIR}")
+            st.error(f"No enrolment data files found in {BASE_DIR}")
             st.stop()
         
         # Load and concatenate all files
